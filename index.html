@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novatech Solutions - Portal Corporativo de Empleados</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR CORPORATIVA REAL -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="logo-badge">🌐</span>
+        <span class="logo-text">Novatech <strong>Solutions</strong></span>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-link active" onclick="switchView('view-team')">Directorio de Empleados</button>
+        <button class="nav-link" onclick="switchView('view-login')">Iniciar Sesión</button>
+        <button class="nav-link btn-nav" onclick="switchView('view-register')">Registrarse</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- VISTA 1: DIRECTORIO DE EMPLEADOS / NOSOTROS (OSINT REAL) -->
+    <section id="view-team" class="view-section active">
+      <div class="hero-section">
+        <h2>Directorio de Empleados</h2>
+        <p>Conoce al equipo profesional que lidera la infraestructura tecnológica y la gestión estratégica de Novatech Solutions.</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Ficha del Sujeto Objetivo: Carlos Mendoza Silva -->
+        <div class="team-card">
+          <div class="member-avatar">👨‍💻</div>
+          <div class="member-info">
+            <h3>Carlos Mendoza Silva</h3>
+            <span class="member-role">Jefe de Infraestructura y TI</span>
+            <p class="member-email">📧 cmendoza@novatech.com</p>
+            <p class="member-bio">"Liderando la red corporativa desde 2018. Apasionado hincha del <strong>Barcelona (1985)</strong> y feliz dueño de mi perro 🐶 <strong>Rocky</strong> (5 años)."</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="member-avatar">👩‍💼</div>
+          <div class="member-info">
+            <h3>Ana María López</h3>
+            <span class="member-role">Gerente de Proyectos Corporativos</span>
+            <p class="member-email">📧 alopez@novatech.com</p>
+            <p class="member-bio">"Especialista en transformación digital, metodologías ágiles y gestión estratégica de equipos."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 2: INICIAR SESIÓN (LOGIN VULNERABLE) -->
+    <section id="view-login" class="view-section">
+      <div class="form-container">
+        <div class="form-card">
+          <div class="form-header">
+            <h2>Acceso a Empleados</h2>
+            <p>Ingresa tus credenciales corporativas para acceder al sistema.</p>
+          </div>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Correo Corporativo</label>
+              <input type="text" id="loginEmail" placeholder="ejemplo@novatech.com" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">Contraseña</label>
+              <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+          </form>
+
+          <div id="loginAlert" class="alert-box hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 3: REGISTRARSE (REGISTRO VULNERABLE) -->
+    <section id="view-register" class="view-section">
+      <div class="form-container">
+        <div class="form-card">
+          <div class="form-header">
+            <h2>Registro de Nuevo Empleado</h2>
+            <p>Completa tus datos de incorporación para crear tu perfil corporativo.</p>
+          </div>
+
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="regNombre">Nombre Completo</label>
+              <input type="text" id="regNombre" placeholder="Nombre y Apellido" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="regEmail">Correo Corporativo</label>
+              <input type="text" id="regEmail" placeholder="usuario@novatech.com" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="regTelefono">Teléfono de Contacto</label>
+              <input type="text" id="regTelefono" placeholder="+506 8888-0000" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="regBio">Presentación / Biografía</label>
+              <textarea id="regBio" rows="3" placeholder="Escribe una breve presentación sobre ti..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="regPassword">Contraseña</label>
+              <input type="password" id="regPassword" placeholder="Crea una contraseña" required autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="btnRegisterSubmit">Crear Mi Cuenta</button>
+          </form>
+
+          <div id="registerAlert" class="alert-box hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 4: PANEL DE PERFIL DE USUARIO (XSS REFLEJADO REAL) -->
+    <section id="view-profile" class="view-section">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profileAvatar">👤</div>
+          <div>
+            <h2 id="profileName">Nombre de Usuario</h2>
+            <span class="profile-role" id="profileRole">Empleado</span>
+            <p class="profile-email" id="profileEmail">email@novatech.com</p>
+          </div>
+        </div>
+
+        <div class="profile-body">
+          <h3>Biografía / Presentación:</h3>
+          <!-- Renderizado dinámico vulnerable a XSS directo -->
+          <div class="bio-display" id="profileBioDisplay">Sin información.</div>
+        </div>
+
+        <button class="btn btn-primary mt-3" onclick="logout()">Cerrar Sesión</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Novatech Solutions S.A. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
